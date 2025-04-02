@@ -75,18 +75,25 @@ class ChatScreenState extends State<ChatScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: messages.length,
-              itemBuilder: (context, i) => MessageWidget(message: messages[i]),
+      body: messages.isEmpty
+          ? Center(
+              child: Text(
+                "Press the mic button to start chatting",
+                style: TextStyle(fontSize: 20),
+              ),
+            )
+          : Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: messages.length,
+                    itemBuilder: (context, i) => MessageWidget(message: messages[i]),
+                  ),
+                ),
+                const SizedBox(height: 80),
+              ],
             ),
-          ),
-          const SizedBox(height: 80),
-        ],
-      ),
     );
   }
 }

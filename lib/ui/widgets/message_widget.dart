@@ -9,20 +9,26 @@ class MessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        color: _messageFromMe(message) ? Color(0xFF6CB2FF) : Colors.green.shade200,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(_messageFromMe(message) ? 15 : 0),
-          topRight: Radius.circular(_messageFromMe(message) ? 0 : 15),
-          bottomRight: Radius.circular(15),
-          bottomLeft: Radius.circular(15),
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: _messageFromMe(message) ? Color(0xFF6CB2FF) : Colors.green.shade200,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(_messageFromMe(message) ? 15 : 0),
+                topRight: Radius.circular(_messageFromMe(message) ? 0 : 15),
+                bottomRight: Radius.circular(15),
+                bottomLeft: Radius.circular(15),
+              ),
+            ),
+            child: ListTile(
+              title: Text(message),
+            ),
+          ),
         ),
-      ),
-      child: ListTile(
-        title: Text(message),
-      ),
+      ],
     );
   }
 }
